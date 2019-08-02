@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: circleci/python:2.7
+    working_directory: ~/rhq
+    steps:
+      - checkout
+      - run:
+          name: Remove git
+          command: rm -rf .git && rm -rf .gitignore && rm -rf .circleci
+      - run:
+          name: Install dependencies
+          command: sudo pip install awscli mkdocs mkdocs-material pymdown-extensions pygments
+      - run:
+          name: Build
+          command: mkdocs build
+      - run:
+          name: Deploy to S3
+          branch: master
+          command: aws s3 sync site/ s3://rhq.reconinfosec.com/ --delete --region us-east-1
+      - run:
+          name: Invalidate cloudfront distribution
+          branch: master
+          command: aws cloudfront create-invalidation --distribution-id E3RRROHKOEZQNJ --paths "/*"
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
