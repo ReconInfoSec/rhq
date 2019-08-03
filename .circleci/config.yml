@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   deploy:
     docker:
@@ -6,33 +6,18 @@ jobs:
     working_directory: ~/rhq
     parameters:
       profile-name:
-        description: Profile name to be configured.
         type: string
         default: default
       aws-access-key-id:
-        description: |
-          AWS access key id for IAM role. Set this to the name of
-          the environment variable you will use to hold this
-          value, i.e. AWS_ACCESS_KEY.
         type: env_var_name
         default: AWS_ACCESS_KEY_ID
       aws-secret-access-key:
-        description: |
-          AWS secret key for IAM role. Set this to the name of
-          the environment variable you will use to hold this
-          value, i.e. $AWS_SECRET_ACCESS_KEY.
         type: env_var_name
         default: AWS_SECRET_ACCESS_KEY
       aws-region:
-        description: |
-          Env var of AWS region to operate in
-          (defaults to AWS_DEFAULT_REGION)
         type: env_var_name
         default: "us-east-1"
       configure-default-region:
-        description: >
-          Some AWS actions don't require a region; set this to false if you do not
-          want to store a default region in ~/.aws/config
         type: boolean
         default: true
     steps:
@@ -45,10 +30,10 @@ jobs:
           command: sudo pip install awscli mkdocs mkdocs-material pymdown-extensions pygments
       - run:
           name: Configure AWS Access Key ID
-          command: aws configure set aws_access_key_id $<<parameters.aws-access-key-id>> --profile <<parameters.profile-name>>
+          command: aws configure set aws_access_key_id $<<parameters.aws-access-key-id>> --profile $<<parameters.profile-name>>
       - run:
           name: Configure AWS Secret Access Key
-          command: aws configure set aws_secret_access_key $<<parameters.aws-secret-access-key>> --profile <<parameters.profile-name>>
+          command: aws configure set aws_secret_access_key $<<parameters.aws-secret-access-key>> --profile $<<parameters.profile-name>>
       - run:
           name: Build
           command: mkdocs build
