@@ -45,3 +45,5 @@ markdown_extensions:
 
 repo_name: 'ReconInfoSec/rhq'
 repo_url: 'https://github.com/ReconInfoSec/rhq'
+
+google_analytics: ['UA-86110655-14', 'rhq.reconinfosec.com']
