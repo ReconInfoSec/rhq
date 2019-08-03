@@ -16,7 +16,7 @@ jobs:
         default: AWS_SECRET_ACCESS_KEY
       aws-region:
         type: env_var_name
-        default: "us-east-1"
+        default: "AWS_DEFAULT_REGION"
       configure-default-region:
         type: boolean
         default: true
