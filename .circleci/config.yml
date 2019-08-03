@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Deploy to S3
           branch: master
-          command: aws s3 sync site/ s3://rhq.reconinfosec.com/ --delete --region us-east-1
+          command: aws s3 sync site/ s3://rhq.reconinfosec.com/ --delete --region us-east-1 --acl public-read
       - run:
           name: Invalidate cloudfront distribution
           branch: master
