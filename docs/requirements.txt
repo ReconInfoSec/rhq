@@ -1,0 +1,7 @@
+sphinx
+sphinx-rtd-theme
+recommonmark
+mkdocs
+mkdocs-material
+pymdown-extensions
+pygments
