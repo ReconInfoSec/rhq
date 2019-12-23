@@ -13,7 +13,8 @@ Initial Access
 ```sql tab="Windows"
 SELECT * FROM hash 
 WHERE (path LIKE 'C:\Users\%\AppData\Local\Temp\%.tmp\%' 
-OR path LIKE 'C:\Users\%\AppData\Local\Microsoft\Outlook%%');
+OR path LIKE 'C:\Users\%\AppData\Local\Microsoft\Outlook%%'
+OR path LIKE 'C:\Documents and Settings\%\Local Settings\Temporary Internet Files\Content.Outlook%%');
 ```
 
 ## File Opening
