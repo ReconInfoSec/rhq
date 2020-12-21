@@ -27,7 +27,7 @@ WHERE enabled != 0;
 ```
 
 ## Startup Items
-**Description:** List all startup items, returning only those that are enabled.
+**Description:** List all startup items, returning only those that are enabled. NOTE: also see "User-specific Run Keys" to ensure you don't miss relevant results.
 
 **Author:** [@eric_capuano](https://twitter.com/eric_capuano)
 
@@ -40,6 +40,20 @@ WHERE status = 'enabled'
 AND path NOT LIKE '%\desktop.ini' 
 AND path NOT LIKE 'C:\Windows\System32\mctadmin.exe' 
 AND path NOT LIKE '%Sidebar.exe /autoRun';
+```
+
+## User-specific Run Keys
+**Description:** User-specific Run keys that are not included in the `startup_items` table. 
+
+**Author:** [@eric_capuano](https://twitter.com/eric_capuano)
+
+**Query:** 
+
+```sql tab="Windows"
+SELECT * 
+FROM registry 
+WHERE path LIKE 'HKEY_USERS\%\Software\Microsoft\Windows\CurrentVersion\Run\%'  
+AND data NOT LIKE '%Sidebar.exe /autoRun';
 ```
 
 ## Services
