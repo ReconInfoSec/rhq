@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   deploy:
     docker:
-      - image: circleci/python:3.7.3
+      - image: circleci/python:3.8.2
     working_directory: ~/rhq
     parameters:
       profile-name:
@@ -27,7 +27,7 @@ jobs:
           command: rm -rf .git && rm -rf .gitignore && rm -rf .circleci
       - run:
           name: Install dependencies
-          command: sudo pip install awscli mkdocs mkdocs-material pymdown-extensions pygments
+          command: sudo pip install awscli mkdocs mkdocs-material pymdown-extensions pygments markdown
       - run:
           name: Configure AWS Access Key ID
           command: aws configure set aws_access_key_id $<<parameters.aws-access-key-id>> --profile <<parameters.profile-name>>
