@@ -26,6 +26,7 @@ nav:
   
 markdown_extensions:
   - codehilite
+  - pymdownx.highlight
   - pymdownx.arithmatex
   - pymdownx.betterem:
       smart_enable: all
@@ -38,6 +39,7 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.tabbed
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
