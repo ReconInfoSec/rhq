@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   deploy:
     docker:
-      - image: circleci/python:2.7
+      - image: circleci/python:3.7.3
     working_directory: ~/rhq
     parameters:
       profile-name:
