@@ -28,3 +28,18 @@ SELECT *
 FROM logged_in_users 
 WHERE user = 'compromised.username';
 ```
+
+## PsExec
+**Description:** Identify systems that the PsExec EULA has been accepted.
+
+- `mtime` = Time that EULA was accepted
+
+**Author:** [@eric_capuano](https://twitter.com/eric_capuano)
+
+**Query:**
+
+```sql tab="Windows"
+SELECT datetime(mtime, 'unixepoch', 'localtime') AS EULA_accepted,path 
+FROM registry 
+WHERE path LIKE 'HKEY_USERS\%\Software\Sysinternals\PsExec\EulaAccepted';
+```
