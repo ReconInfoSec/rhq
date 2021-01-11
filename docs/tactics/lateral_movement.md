@@ -8,12 +8,18 @@
 
 **Author:** [@eric_capuano](https://twitter.com/eric_capuano)
 
-**Query:** 
+**Query1:** 
 
 ```sql tab="Windows"
 SELECT proc.parent AS process_parent, proc.path AS process_path, proc.pid AS process_id, proc.cwd AS process_directory, pipe.pid AS pipe_pid, pipe.name AS pipe_name 
 FROM processes proc 
 JOIN pipes pipe ON proc.pid=pipe.pid;
+```
+
+##Provide default named pipes used by most popular post exploitation frameworks
+**Query2:** 
+```sql tab="Windows"
+SELECT * from pipes WHERE name LIKE 'psexesvc%' OR name LIKE 'remcom%' OR name LIKE 'gruntsvc%' OR name LIKE 'msagent%' OR name LIKE 'status%' OR name LIKE 'csexecsvc%' OR name LIKE 'TestSVC%' OR name LIKE 'jaccdpqnvbrrxlaf' OR name LIKE 'Posh%';
 ```
 
 ## Logged in users
