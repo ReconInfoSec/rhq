@@ -43,3 +43,10 @@ SELECT datetime(mtime, 'unixepoch', 'localtime') AS EULA_accepted,path
 FROM registry 
 WHERE path LIKE 'HKEY_USERS\%\Software\Sysinternals\PsExec\EulaAccepted';
 ```
+## C2 & LM Named Pipes
+**Description:** Identifies default named pipes used by most popular post exploitation frameworks.
+**Author:** [Janantha Marasinghe](https://medium.com/@blueteamops)
+**Query:** 
+```sql tab="Windows"
+SELECT * from pipes WHERE name LIKE 'psexesvc%' OR name LIKE 'remcom%' OR name LIKE 'gruntsvc%' OR name LIKE 'msagent%' OR name LIKE 'status%' OR name LIKE 'csexecsvc%' OR name LIKE 'TestSVC%' OR name LIKE 'jaccdpqnvbrrxlaf' OR name LIKE 'Posh%';
+```
