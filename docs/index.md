@@ -4,7 +4,7 @@ Welcome to the Recon Hunt Queries repo!
 ## About 
 This project is proudly maintained by [Recon InfoSec](http://reconinfosec.com) to support the community of osquery users!
 
-Our goal with this project is to have a consolidated place for **incident response & threat hunting** focused queries for **[osquery](https://github.com/osquery/osquery)**. We've grouped the queries by the [MITRE ATT&CK](https://attack.mitre.org/wiki/Main_Page) tactics they support, but there are a few "General" categories of queries as well. Use the navigation bar to the left to explore.
+Our goal with this project is to have a consolidated place for **incident response & threat hunting** focused queries for **[osquery](https://github.com/osquery/osquery)**. We've grouped the queries by the [MITRE ATT&CK](https://attack.mitre.org/wiki/Main_Page) tactics they support, but there are a few "General" categories of queries as well. Use the navigation bar on the top left to explore.
 
 These are collections of **individual queries** for specific use cases, not query packs which are a [separate thing](https://www.darkbytes.com/osquery-scheduled-queries-packs/) altogether.
 
