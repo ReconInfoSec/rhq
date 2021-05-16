@@ -16,6 +16,21 @@ FROM processes proc
 JOIN pipes pipe ON proc.pid=pipe.pid;
 ```
 
+## CobaltStrike Default Named Pipes
+**Description:** During  various tests, it observed that the created pipe displayed the same pattern that can be detected by this regex:   MSSE-[0-9]{4}-server .Cobalt Strike users cannot change the default value of these pipes without accessing and modifying the source code configuration of Cobalt Strike.  
+
+- https://www.sekoia.io/en/hunting-and-detecting-cobalt-strike/
+
+**Author:** [@samira_hoseini](https://github.com/samisecure)
+
+**Query:** 
+
+```sql tab="Windows"
+SELECT proc.parent AS process_parent, proc.path AS process_path, proc.pid AS process_id, proc.cwd AS process_directory, pipe.pid AS pipe_pid, pipe.name AS pipe_name 
+FROM processes proc 
+JOIN pipes pipe ON proc.pid=pipe.pid;
+WHERE pipe.name LIKE '*MSSE-[0-9]{4}-server*'
+```
 ## Logged in users
 **Description:** Get all logged on users. Helpful if you already suspect a compromised account and want to quickly identify where that account is in use.
 
